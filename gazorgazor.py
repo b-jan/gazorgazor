@@ -1,11 +1,22 @@
 # https://stackoverflow.com/questions/22233848/how-to-verify-an-email-address-in-python-using-smtplib
 # https://pypi.python.org/pypi/validate_email
+
+#! pip install dnspython
+
+import pip
+
+def install(package):
+    pip.main(['install', package])
+
+install('dnspython')
+
+
 import re
 import socket
 import smtplib
 import dns.resolver
 
-email_address = 'khelilamira@hotmail.fr'
+email_address = 'akhelil.pro@gmail.com'
 
 #Step 1: Check email
 #Check using Regex that an email meets minimum requirements, throw an error if not
