@@ -62,9 +62,12 @@ def email_validator():
     # Assume 250 as Success
     if code == 250:
     	answer = 'Success'
+    	status = 'Success'
     else:
     	answer = 'Bad'
+    	status = 'Success'
     response = {
+        'requestStatus': status,
         'validEmail': answer
     }
     return jsonify(response)

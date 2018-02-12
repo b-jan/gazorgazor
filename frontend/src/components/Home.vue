@@ -28,14 +28,19 @@ export default {
       this.validEmail = this.getEmailValidationFromBackend(this.emailAddress)
     },
     getEmailValidationFromBackend (emailAddress) {
-      const path = `http://localhost:5000/api/email-validator` + '?email=' + emailAddress
-      axios.get(path)
-        .then(response => {
-          this.validEmail = response.data.validEmail
-        })
-        .catch(error => {
-          console.log(error)
-        })
+      if (emailAddress === '') {
+        return 'Email is empty'
+      } else {
+        const path = `http://localhost:5000/api/email-validator` + '?email=' + emailAddress
+        axios.get(path)
+          .then(response => {
+            this.validEmail = response.data.validEmail
+          })
+          .catch(error => {
+            console.log(error)
+            this.validEmail = 'Bad Syntax'
+          })
+      }
     }
   }
 }
