@@ -1,6 +1,6 @@
 from flask import Flask, render_template, jsonify
 from flask_cors import CORS
-from random import *
+from flask import request
 
 app = Flask(__name__,
             static_folder = "./dist/static",
@@ -15,13 +15,13 @@ def install(package):
 install('dnspython')
 
 @app.route('/api/email-validator')
-def random_number():
+def email_validator():
     import re
     import socket
     import smtplib
     import dns.resolver
 
-    email_address = 'akhelilokokok.pro@gmail.com'
+    email_address = request.args.get('email', default = '', type = str)
 
     #Step 1: Check email
     #Check using Regex that an email meets minimum requirements, throw an error if not

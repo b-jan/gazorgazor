@@ -3,7 +3,7 @@
     <p>Home</p>
     <input
       type="text"
-      placeholder="djibril.cisse@hotmail.com"
+      placeholder="djibril.cisse@gmail.com"
       v-model="emailAddress"
     >
     <button @click="getEmailValidity">Verify Email</button>
@@ -25,10 +25,10 @@ export default {
   },
   methods: {
     getEmailValidity () {
-      this.validEmail = this.getEmailValidationFromBackend()
+      this.validEmail = this.getEmailValidationFromBackend(this.emailAddress)
     },
-    getEmailValidationFromBackend () {
-      const path = `http://localhost:5000/api/email-validator`
+    getEmailValidationFromBackend (emailAddress) {
+      const path = `http://localhost:5000/api/email-validator` + '?email=' + emailAddress
       axios.get(path)
         .then(response => {
           this.validEmail = response.data.validEmail
