@@ -31,7 +31,7 @@ export default {
       if (emailAddress === '') {
         return 'Email is empty'
       } else {
-        const path = `http://localhost:5000/api/email-validator` + '?email=' + emailAddress
+        const path = `/api/email-validator` + '?email=' + emailAddress
         axios.get(path)
           .then(response => {
             this.validEmail = response.data.validEmail
